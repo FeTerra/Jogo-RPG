@@ -24,7 +24,8 @@ class Lobo(Monstro):
     def __init__(self, pontos_vida, pontos_ataque, tipo, forca):
         super().__init__(pontos_vida, pontos_ataque, tipo)
         self.forca = forca
-
+        
+# Vamos dificultar essa batalha e coloca mais um Goblin
 goblin1 = Goblin(50, 10, "Goblin", 5)
 goblin2 = Goblin(50, 10, "Goblin", 7)
 lobo = Lobo(80, 15, "Lobo", 8)
