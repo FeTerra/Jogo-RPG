@@ -57,15 +57,15 @@ print("Monstro 2 - Tipo:", monstro2.tipo)
 
 # Personagem ataca o monstro
 personagem1.atacar(monstro1)
-print("O personagem atacou o lobo! Pontos de vida do lobo:", monstro1.pontos_de_vida)
+print("O Guerreiro atacou o lobo! Pontos de vida do lobo:", monstro1.pontos_de_vida)
 
 personagem1.atacar(monstro2)
-print("O personagem atacou o goblin! Pontos de vida do goblin:", monstro2.pontos_de_vida)
+print("O Guerreiro atacou o goblin! Pontos de vida do goblin:", monstro2.pontos_de_vida)
 
 
 # Monstro ataca o personagem
 monstro1.atacar(personagem1)
-print("O monstro atacou o personagem! Pontos de vida do personagem:", personagem1.pontos_de_vida)
+print("O monstro atacou o Guerreiro! Pontos de vida do Guerreiro:", personagem1.pontos_de_vida)
 
 monstro2.atacar(personagem1)
 print("O monstro atacou o Guerreiro! Pontos de vida do Guerreiro:", personagem1.pontos_de_vida)
