@@ -1,4 +1,4 @@
-#Criando a classe SerVivo
+# Criando a classe SerVivo
 class SerVivo:
     def __init__(self, pontos_de_vida, pontos_de_ataque):
         self.pontos_de_vida = pontos_de_vida
@@ -11,8 +11,10 @@ class SerVivo:
         if self.pontos_de_vida <= 0:
             if isinstance(self, Personagem):
                 print("O personagem morreu.")
-            elif isinstance(self, Monstro):
-                print("O monstro morreu.")
+            elif isinstance(self, monstro1):
+                print("O Lobo morreu.")
+            elif isinstance(self, monstro2):
+                print("O Goblin morreu.")
 
 # Criando um novo objeto da classe SerVivo
 ser_vivo1 = SerVivo(100, 20)
