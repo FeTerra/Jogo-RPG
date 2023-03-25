@@ -1,4 +1,6 @@
-Nessa nova versão, foi adicionado um loop de rodadas na batalha. A cada rodada, é sorteado se o guerreiro irá esquivar ou não do ataque do monstro. Se ele não esquivar, o guerreiro ataca o monstro e o monstro ataca o guerreiro. Se a vida de algum dos personagens chegar a 0, a batalha acaba
+Nessa nova versão, foi adicionado um loop de rodadas na batalha.
+A cada rodada, é sorteado se o guerreiro irá esquivar ou não do ataque do monstro. Se ele não esquivar, 
+o guerreiro ataca o monstro e o monstro ataca o guerreiro. Se a vida de algum dos personagens chegar a 0, a batalha acaba.
 
 import random
 
