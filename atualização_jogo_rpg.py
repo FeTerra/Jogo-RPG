@@ -1,80 +1,51 @@
-# Uma  breve história para vocês!
-print("Era uma vez um grande guerreiro chamado Kratos, que se deparou com um lobo feroz e um goblin astuto.\n")
+import random
 
-print("Kratos sacou sua espada e se preparou para a batalha...\n")
+class Ser_Vivo:
+    def __init__(self, pontos_vida, pontos_ataque):
+        self.pontos_vida = pontos_vida
+        self.pontos_ataque = pontos_ataque
 
-print("O lobo avançou primeiro com toda a sua força, mas Kratos, com seus reflexos rápidos, conseguiu desviar do ataque e contra-atacar com um golpe certeiro.\n")
-
-print("O goblin, vendo o companheiro em apuros, usou sua inteligência para criar uma distração e atacar por trás. Kratos, porém, já estava preparado e conseguiu bloquear o ataque com seu escudo.\n")
-
-# Criando a classe SerVivo
-class SerVivo:
-    def __init__(self, pontos_de_vida, pontos_de_ataque):
-        self.pontos_de_vida = pontos_de_vida
-        self.pontos_de_ataque = pontos_de_ataque
-
-    def atacar(self, alvo):
-        alvo.pontos_de_vida -= self.pontos_de_ataque
-
-    def verificar_vida(self):
-        if self.pontos_de_vida <= 0:
-            if isinstance(self, Personagem):
-                print("O personagem morreu.")
-            elif isinstance(self, monstro1):
-                print("O Lobo morreu.")
-            elif isinstance(self, monstro2):
-                print("O Goblin morreu.")
-
-# Criando um novo objeto da classe SerVivo
-ser_vivo1 = SerVivo(100, 20)
-
-# Acessando os atributos do objeto criado
-print("Pontos de vida:", ser_vivo1.pontos_de_vida)
-print("Pontos de ataque:", ser_vivo1.pontos_de_ataque)
-
-class Personagem(SerVivo):
-    def __init__(self, nome, pontos_de_vida, pontos_de_ataque):
-        super().__init__(pontos_de_vida, pontos_de_ataque)
+class Personagem(Ser_Vivo):
+    def __init__(self, pontos_vida, pontos_ataque, nome):
+        super().__init__(pontos_vida, pontos_ataque)
         self.nome = nome
 
-# Criando um novo objeto da classe Personagem
-personagem1 = Personagem("Guerreiro", 100, 20)
-
-# Acessando os atributos do objeto criado
-print("Nome:", personagem1.nome)
-print("Pontos de vida:", personagem1.pontos_de_vida)
-print("Pontos de ataque:", personagem1.pontos_de_ataque)
-
-class Monstro(SerVivo):
-    def __init__(self, pontos_de_vida, pontos_de_ataque, tipo, inteligencia=10, forca=10):
-        super().__init__(pontos_de_vida, pontos_de_ataque)
+class Monstro(Ser_Vivo):
+    def __init__(self, pontos_vida, pontos_ataque, tipo):
+        super().__init__(pontos_vida, pontos_ataque)
         self.tipo = tipo
+
+class Goblin(Monstro):
+    def __init__(self, pontos_vida, pontos_ataque, tipo, inteligencia):
+        super().__init__(pontos_vida, pontos_ataque, tipo)
         self.inteligencia = inteligencia
+
+class Lobo(Monstro):
+    def __init__(self, pontos_vida, pontos_ataque, tipo, forca):
+        super().__init__(pontos_vida, pontos_ataque, tipo)
         self.forca = forca
 
-# Criando um novo objeto da classe Monstro
-monstro1 = Monstro(150, 30, "Lobo", 0, 12)
-monstro2 = Monstro(80, 15, "Goblin", 8, 0)
+goblin1 = Goblin(50, 10, "Goblin", 5)
+goblin2 = Goblin(50, 10, "Goblin", 7)
+lobo = Lobo(80, 15, "Lobo", 8)
+guerreiro = Personagem(100, 20, "Guerreiro")
 
-# Acessando os atributos do objeto criado
-print("Pontos de vida:", monstro1.pontos_de_vida)
-print("Pontos de ataque:", monstro1.pontos_de_ataque)
-print("Tipo:", monstro1.tipo)
-print("Monstro 2 - Pontos de vida:", monstro2.pontos_de_vida)
-print("Monstro 2 - Pontos de ataque:", monstro2.pontos_de_ataque)
-print("Monstro 2 - Tipo:", monstro2.tipo)
+def batalha(p1, p2):
+    print(f"{p1.nome} vs {p2.tipo}")
+    print(f"{p1.nome} tem {p1.pontos_vida} pontos de vida e {p1.pontos_ataque} pontos de ataque.")
+    print(f"{p2.tipo} tem {p2.pontos_vida} pontos de vida e {p2.pontos_ataque} pontos de ataque.")
+    while p1.pontos_vida > 0 and p2.pontos_vida > 0:
+        if random.randint(1, 2) == 1:
+            p2.pontos_vida -= p1.pontos_ataque
+            print(f"{p1.nome} ataca {p2.tipo} causando {p1.pontos_ataque} de dano. {p2.tipo} tem {p2.pontos_vida} pontos de vida restantes.")
+        else:
+            p1.pontos_vida -= p2.pontos_ataque
+            print(f"{p2.tipo} ataca {p1.nome} causando {p2.pontos_ataque} de dano. {p1.nome} tem {p1.pontos_vida} pontos de vida restantes.")
+    if p1.pontos_vida <= 0:
+        print(f"{p1.nome} morreu.")
+    else:
+        print(f"{p2.tipo} morreu.")
 
-# Personagem ataca o monstro
-personagem1.atacar(monstro1)
-print("O Guerreiro atacou o lobo! Pontos de vida do lobo:", monstro1.pontos_de_vida)
-
-personagem1.atacar(monstro2)
-print("O Guerreiro atacou o goblin! Pontos de vida do goblin:", monstro2.pontos_de_vida)
-
-
-# Monstro ataca o personagem
-monstro1.atacar(personagem1)
-print("O monstro atacou o Guerreiro! Pontos de vida do Guerreiro:", personagem1.pontos_de_vida)
-
-monstro2.atacar(personagem1)
-print("O monstro atacou o Guerreiro! Pontos de vida do Guerreiro:", personagem1.pontos_de_vida)
+batalha(guerreiro, goblin1)
+batalha(guerreiro, goblin2)
+batalha(guerreiro, lobo)
