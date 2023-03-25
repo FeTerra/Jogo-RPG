@@ -1,3 +1,12 @@
+# Uma  breve história para vocês!
+print("Era uma vez um grande guerreiro chamado Kratos, que se deparou com um lobo feroz e um goblin astuto.\n")
+
+print("Kratos sacou sua espada e se preparou para a batalha...\n")
+
+print("O lobo avançou primeiro com toda a sua força, mas Kratos, com seus reflexos rápidos, conseguiu desviar do ataque e contra-atacar com um golpe certeiro.\n")
+
+print("O goblin, vendo o companheiro em apuros, usou sua inteligência para criar uma distração e atacar por trás. Kratos, porém, já estava preparado e conseguiu bloquear o ataque com seu escudo.\n")
+
 # Criando a classe SerVivo
 class SerVivo:
     def __init__(self, pontos_de_vida, pontos_de_ataque):
